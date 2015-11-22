@@ -258,18 +258,61 @@ h3 {
 .social-icon i {
 	margin-top:12px;
 }
+
+input, textarea {
+    width: 100%;
+    background: #efefef;
+    outline: none;
+	border: 5px solid #000;
+    color: #313131;
+    margin-bottom: 2.8rem;
+	/*margin-bottom:5px;*/
+    line-height: 2;
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: 1px;
+    -webkit-transition: all 0.6s ease;
+    -moz-transition: all 0.6s ease;
+    -ms-transition: all 0.6s ease;
+    -transition: all 0.6s ease;
+    transition: all 0.6s ease;
+    resize: none;
+	font-family:"Ancillary";
+	font-style:italic;
+	font-size:14px;
+	padding:14px;
+	
+}
+
+input {
+    border-bottom: 1px solid #FFF;
+    font-weight: 300;
+}
+
+
+textarea{
+	 border: 1px solid #DDDDDD;
+
+}
+input:focus { 
+	font-style:normal;
+}
+textarea:focus { 
+	font-style:normal;
+}
 	</style>
     
   </head>
   <body>
 
-    <input type='text' id='messageInput' placeholder='Message'>
-    <select id='group' onchange='changeSelect()'>
+   <div style="width:460px; margin-left:auto; margin-right:auto; margin-top:30px; margin-bottom:30px;"> <textarea type='text' id='messageInput' placeholder='Suggestions...'> </textarea>
+    <select id='group' onchange='changeSelect()' style="display:none;">
       <option id='op1' value="group1" selected="selected" >Group1</option>
       <option id='op2' value="group2">Group2</option>
       <option id='op3' value="group3">Group3</option>
       <option value="group4">Group4</option>
     </select>
+    </div>
       <div id="middleColumn"> </div>
 
     <script>
