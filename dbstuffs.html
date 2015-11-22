@@ -2,6 +2,264 @@
   <head>
     <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <link rel="stylesheet" href="./font-awesome.min.css">
+
+    <style>
+	body{
+background-color:#fff;	
+/*background-image:url("./geometry2.png");*/
+
+}
+#middleColumn {
+	width:560px;
+	margin-left:auto;
+	margin-right:auto;
+	min-height:100%;
+}
+
+
+hr {
+	height:1px;
+	width:109px;
+	color:#e0e0e0;
+	border:0; 
+	border-top: 1px solid #ccc;
+    padding: 0;
+	
+}
+
+#sidebar {
+    background: #fff;
+    width: 250px;
+	height:200px;
+    color: #fff;
+	border: 1px solid;
+    border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+    border-radius: 3px;
+	position:fixed;
+	z-index:100;
+	margin-left:100px;
+}
+
+textarea {
+	
+	
+}
+
+.boxTemplate{
+	width:560px;
+	min-height:100px;	
+	border-color:#000;
+	border:1px #000;
+	background-color:#fff;
+	margin-left:auto;
+	margin-right:auto;
+	/*margin-top:20px;
+	margin-bottom:20px;*/
+	padding:20px;
+	font-family:"Montserrat";
+	/*-webkit-box-shadow: 3px 20px 36px -22px rgba(0,0,0,0.24);
+-moz-box-shadow: 3px 20px 36px -22px rgba(0,0,0,0.24);
+box-shadow: 3px 20px 36px -22px rgba(0,0,0,0.24);*/
+    /*border: 1px solid;
+    border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+    border-radius: 3px;*/
+	border-width: 1px 0 0px 0;
+	border-color:#cfcfcf;
+	border-style:solid;
+	 
+}
+.boxTemplate h2 {
+	font-size:14px;	
+	font-weight:300;
+	color:#8AAF57;
+	
+}
+
+.boxTemplate p {
+	font-size:12px;	
+	font-weight:300;
+	
+}
+.animated { 
+    -webkit-animation-duration: 1.5s; 
+    animation-duration: 1.5s; 
+    -webkit-animation-fill-mode: both; 
+    animation-fill-mode: both; 
+    animation-iteration-count:forwards; 
+    -webkit-animation-iteration-count:forwards; 
+} 
+
+@-webkit-keyframes fadeInUp { 
+    0% { 
+        opacity: 0; 
+        -webkit-transform: translateY(20px); 
+    } 
+    100% { 
+        opacity: 1; 
+        -webkit-transform: translateY(0); 
+    } 
+} 
+
+@keyframes fadeInUp { 
+    0% { 
+        opacity: 0; 
+        transform: translateY(20px); 
+    } 
+    100% { 
+        opacity: 1; 
+        transform: translateY(0); 
+    } 
+} 
+
+.fadeInUp { 
+    -webkit-animation-name: fadeInUp; 
+    animation-name: fadeInUp; 
+}
+
+h1 {
+	font-size:40px;	
+	text-align:center;
+	font-family:"Montserrat";
+	font-weight:400;
+}
+
+.votingPanel {
+	width:100px;
+	height:100%;	
+	float:left;
+	position:relative;
+	
+}
+
+
+.row {
+    display: flex; /* equal height of the children */
+}
+
+.col {
+    /*flex: 1;*/ /* additionally, equal width */
+}
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h3 {
+	font-size:18px;
+	font-weight:300;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(63, 66, 74, 0.7);
+    overflow: auto;
+    font-family: "Montserrat";
+    z-index: 99;
+}
+#postButton {
+	top:0;
+	right:0;
+	margin-right:30px;
+	width:50px;
+	height:50px;
+	background-color:#000;	
+	
+}
+
+
+}
+.wrap {
+	color:#e9e9e9;
+	text-align:center;
+	max-width:90%;
+	margin:0 auto;
+}
+.wrap ul.wrap-nav {
+	text-transform:capitalize;
+	padding:150px 0px 100px;
+}
+.wrap ul.wrap-nav li {
+	font-size:0px;
+	display:inline-block;
+	vertical-align:top;
+	width:24%;
+	position:relative;
+}
+.wrap ul.wrap-nav li a {
+	color:#1e3d54;
+	display:block;
+	padding:8px 0;
+	text-decoration:none;
+	transition-property:all .2s linear 0s;
+	-moz-transition:all .2s linear 0s;
+	-webkit-transition:all .2s linear 0s;
+	-o-transition:all .2s linear 0s;
+}
+.wrap ul.wrap-nav li a:hover {
+	color:#f0f0f0;
+}
+.wrap ul.wrap-nav ul {
+	padding:20px 0;
+}
+.wrap ul.wrap-nav ul li {
+	display:block;
+	font-size:30px;
+	width:100%;
+	color:#e9e9e9;
+}
+.wrap ul.wrap-nav ul li a {
+	color:#f0f0f0;
+}
+.wrap ul.wrap-nav ul li a:hover {
+	color:#1e3d54;
+}
+.social {
+	font-size:25px;
+	padding:20px;
+}
+.socialCard {
+	font-size:25px;	
+}
+.social p {
+	margin:0;
+	padding:20px 0 5px 0;
+	line-height:30px;
+	font-size:13px;
+}
+.social p a {
+	text-decoration:none;
+	margin:0;
+	padding:0;
+}
+.social-icon {
+	width:80px;
+	height:50px;
+	color:#fff;
+	display:inline-block;
+	margin:0 20px;
+	transition-property:all .2s linear 0s;
+	-moz-transition:all .2s linear 0s;
+	-webkit-transition:all .2s linear 0s;
+	-o-transition:all .2s linear 0s;
+}
+.social-icon:hover {
+	background:#1e3d54;
+	color:#f0f0f0;
+}
+.social-icon i {
+	margin-top:12px;
+}
+	</style>
+    
   </head>
   <body>
     <div id='messagesDiv'></div>
@@ -12,6 +270,7 @@
       <option id='op3' value="group3">Group3</option>
       <option value="group4">Group4</option>
     </select>
+      <div id="middleColumn"> </div>
 
     <script>
       var user = 'Arthur';
@@ -62,12 +321,10 @@
         var upScore = post.child('Upvotes').numChildren();
 
         console.log("text:"+message.text);
-        $('body').prepend('<div id='+key+'>'+
-          '<p class="message">'+message.text+ '</p>'+
-          '<p class="upScore"> upScore: '+ upScore+'</p><p class="downScore">downScore: '+downScore+'</p>'+
-          '<button id="u'+key+'" type="button" onclick=vote("'+key+'","1",checkVote("Upvotes","'+key+'"),checkVote("Downvotes","'+key+'"))>Up</button>'+
-          '<button id="d'+key+'" type="button" onclick=vote("'+key+'","-1",checkVote("Upvotes","'+key+'"),checkVote("Downvotes","'+key+'"))>Down</button>'+
-          '</div>');
+		var totalScore = upScore - downScore;
+		
+        $('#middleColumn').prepend('<div class=" row boxTemplate animated fadeInUp"> <div style="width:40px; !important" class=" col"> <i style="margin-top:10px;"class="fa fa-chevron-up"></i><br><h3 style="margin-top:20px;">' + totalScore + '</h3><i class="fa fa-chevron-down"></i></div><div style="width:400px;"class=" col"><h2>' + user + '</h2><p>' + message.text + '</p><h2 style="font-size:10px;">' + '</h2></div></div>'
+);
         myDataRef.child('Posts/'+key+'/Upvotes').on('child_added',function(snapshot){
           console.log('upvote was added!');
 
