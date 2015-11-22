@@ -1,0 +1,135 @@
+<html>
+  <head>
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+  </head>
+  <body>
+    <div id='messagesDiv'></div>
+    <input type='text' id='messageInput' placeholder='Message'>
+    <select id='group' onchange='changeSelect()'>
+      <option id='op1' value="group1" >Group1</option>
+      <option id='op2' value="group2" selected="selected">Group2</option>
+      <option id='op3' value="group3">Group3</option>
+      <option value="group4">Group4</option>
+    </select>
+
+    <script>
+      var user = 'Arthur';
+      var myDataRef = new Firebase('https://intrafeed.firebaseio.com/');
+      var posts = myDataRef.child('Posts');
+      var group = $('#group').val();
+
+      $('#messageInput').keypress(function (e) {
+        if (e.keyCode == 13) {
+          var text = $('#messageInput').val();
+          var downScore = parseInt($('#downScore').val());
+          var upScore = parseInt($('#upScore').val());
+         
+          console.log(user);
+          var post = posts.push({"user":user ,"date":Firebase.ServerValue.TIMESTAMP,"text":text}).key();
+      
+          var groups= myDataRef.child('Groups/'+group+'/Posts');
+          groups.child(post).set(true);
+          var users = myDataRef.child('Users/'+user+'/Posts');
+          users.child(post).set(true);
+          $('#messageInput').val('');
+        }
+      });
+     
+      myDataRef.child('Groups/'+$('#group').val()+'/Posts').on('child_added', function(snapshot) {
+        
+        var post = snapshot.key();
+        console.log(post);
+        myDataRef.child('Posts/'+post).once('value',function(snapshot) {
+            var message = snapshot;
+
+            displayPost(message);
+        });
+      });
+
+      function checkVote(voteType,post){
+        myDataRef.child('Posts/'+post).once('value',function(snapshot) {
+          var test = snapshot.child(voteType).hasChild(user);
+          console.log("checkVote"+voteType+": " + test);
+          return test;
+        });
+      };
+
+      function displayPost(post) {
+        var message = post.val();
+        var key = post.key();
+        var downScore = post.child('Downvotes').numChildren();
+        var upScore = post.child('Upvotes').numChildren();
+
+        console.log("text:"+message.text);
+        $('body').prepend('<div id='+key+'>'+
+          '<p class="message">'+message.text+ '</p>'+
+          '<p class="upScore"> upScore: '+ upScore+'</p><p class="downScore">downScore: '+downScore+'</p>'+
+          '<button id="u'+key+'" type="button" onclick=vote("'+key+'","1",checkVote("Upvotes","'+key+'"),checkVote("Downvotes","'+key+'"))>Up</button>'+
+          '<button id="d'+key+'" type="button" onclick=vote("'+key+'","-1",checkVote("Upvotes","'+key+'"),checkVote("Downvotes","'+key+'"))>Down</button>'+
+          '</div>');
+        myDataRef.child('Posts/'+key+'/Upvotes').on('child_added',function(snapshot){
+          console.log('upvote was added!');
+
+        });
+        myDataRef.child('Posts/'+key+'/Downvotes').on('child_added',function(snapshot){
+          console.log('downvotes was added!');
+
+        });
+        myDataRef.child('Posts/'+key+'/Upvotes').on('child_removed',function(snapshot){
+          console.log('upvote was removed!');
+
+        });
+        myDataRef.child('Posts/'+key+'/Downvotes').on('child_removed',function(snapshot){
+          console.log('downvote was removed!');
+        });        
+      };
+      function changeSelect(){
+        group= $('#group').val();
+
+      };
+      function vote(entry,num,upvoted,downvoted){
+        
+        if(num==1){
+          if(upvoted){
+            console.log('upvote pressed upvote removed');
+            myDataRef.child('Posts/'+entry+'/Upvotes/'+user).remove();//removing upvotes
+            return;
+          }else{
+            if(downvoted){
+             console.log('upvote pressed downvote removed upvote added');
+              myDataRef.child('Posts/'+entry+'/Downvotes/'+user).remove();
+             myDataRef.child('Posts/'+entry+'/Upvotes/'+user).set(true);
+             return;
+            }else{
+              console.log('upvote pressed upvote added');
+
+              myDataRef.child('Posts/'+entry+'/Upvotes/'+user).set(true);
+              return;
+            }
+          }
+          
+        }else{
+          if(downvoted){
+            console.log('downvote pressed downvote removed');
+            myDataRef.child('Posts/'+entry+'/Downvotes/'+user).remove();
+            return;
+          }else{
+            if(upvoted){
+              console.log('downvote pressed upvote removed downvote added');
+
+              myDataRef.child('Posts/'+entry+'/Upvotes/'+user).remove();
+              myDataRef.child('Posts/'+entry+'/Downvotes/'+user).set(true);
+              return;
+            }else{
+              console.log('downvote pressed downvote added');
+
+              myDataRef.child('Posts/'+entry+'/Downvotes/'+user).set(true);
+              return;
+            }
+          }
+        }
+      };
+    </script>
+  </body>
+</html>
