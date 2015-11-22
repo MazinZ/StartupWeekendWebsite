@@ -327,7 +327,7 @@ h3 {
         console.log("text:"+message.text);
 		var totalScore = upScore - downScore;
 		
-        $('#middleColumn').prepend('<div class=" row boxTemplate animated fadeInUp"> <div style="width:40px; !important" class=" col"> <i style="margin-top:10px;"class="fa fa-chevron-up"></i><br><h3 style="margin-top:20px;">' + totalScore + '</h3><i class="fa fa-chevron-down"></i></div><div style="width:400px;"class=" col"><h2>' + user + '</h2><p>' + message.text + '</p><h2 style="font-size:10px;">' + '</h2></div></div>'
+        $('#middleColumn').prepend('<div class=" row boxTemplate animated fadeInUp"> <div style="width:40px; !important" class=" col"> <i style="margin-top:10px;"class="fa fa-chevron-up"></i><br><h3 style="margin-top:20px;">' + totalScore + '</h3><i class="fa fa-chevron-down"></i></div><div style="width:400px;"class=" col"><h2>' + user + '</h2><p>' + message.text + '</p><h2 style="font-size:10px;"> Comments(2)' + '</h2></div></div>'
 );
        
         myDataRef.child('Posts/'+key+'/Upvotes').on('child_added',function(snapshot){
