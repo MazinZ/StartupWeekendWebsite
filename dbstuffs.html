@@ -18,22 +18,10 @@
       var myDataRef = new Firebase('https://intrafeed.firebaseio.com/');
       var posts = myDataRef.child('Posts');
       var group = $('#group').val();
-      var inputs=$('.commentInput');
-      for(i=0;i<inputs.length;i++){
-      inputs[i].keypress(function (e) {
-        if (e.keyCode == 13) {
-          for(j=0;j<inputs.length;j++){
-            var text = inputs[j].val();
-            console.log(user);
-            var post = myDataRef.child("Posts/"+inputs[j].parent().id+"/Comments").push({"text":text,"date":Firebase.ServerValue.TIMESTAMP}).key();
-            var users = myDataRef.child('Users/'+user+'/Comments');
-            users.child(post).set(true);
-            inputs[j].val('');
-          }
 
-        }
-      });
-    }
+      function postComment(text,user,anonymous,postKey){
+        myDataRef.child("Posts/"+postKey+"/Comments").push({"anonymous":anonymous,"date":Firebase.ServerValue.TIMESTAMP,"text":text,"user":postId});
+      }
 
       $('#messageInput').keypress(function (e) {
         if (e.keyCode == 13) {
