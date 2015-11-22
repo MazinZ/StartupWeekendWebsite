@@ -1,0 +1,88 @@
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,300,200,500,600,700,800);
+
+body, html{
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	height: 100%;
+	margin: 0;
+	background-image: url(../images/backDark.png);
+	background-position: center;
+	background-size: cover;
+}
+
+.menuBar {
+	width: 100%;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#nav {
+	float: right;
+	margin-right: 100px;
+}
+
+#nav ul li{
+	list-style: none;
+	float: left;
+	margin-right: 50px;
+}
+
+#nav a{
+	text-decoration: none;
+	font-family: Arial, Helvetica, sans-serif;
+	text-transform: uppercase;
+	font-size: 12px;
+	color: #fff;
+}
+
+#log{
+	height: 100%;
+	background-image: url(../images/loginBtn.png);
+	background-size: contain;
+}
+
+.titleBlock {
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #fff;
+	font-size: 70px;
+	letter-spacing: 8px;
+	padding-top: 100px;
+}
+
+#titleText {
+	text-align: center;
+	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+	letter-spacing: 2px;
+	font-weight: 100;
+	font-size: 24px;
+	color: #fff;
+}
+
+#signUpBtn {
+	text-align: center;
+	padding: 120px;
+}
+
+#signUpBtn img{
+	width: 12%;
+}
+
+
+
+#links {
+	text-align: center;
+}
+
+#links img{
+	width: 15%;
+	padding-right: 50px;
+	padding-left: 50px;
+}
+
