@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Box Template</title>
+<link rel="stylesheet" href="./font-awesome.min.css">
+
+<style>
+
+body{
+background-color:#e9eaed;	
+/*background-image:url("./geometry2.png");*/
+}
+hr {
+	height:1px;
+	width:109px;
+	color:#e0e0e0;
+	border:0; 
+	border-top: 1px solid #ccc;
+    padding: 0;
+	
+}
+
+#sidebar {
+    background: #fff;
+    width: 250px;
+	height:200px;
+    color: #fff;
+	border: 1px solid;
+    border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+    border-radius: 3px;
+	position:fixed;
+	z-index:100;
+	margin-left:100px;
+}
+
+textarea {
+	
+	
+}
+
+.boxTemplate{
+	width:460px;
+	min-height:100px;	
+	border-color:#000;
+	border:1px #000;
+	background-color:#fff;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:20px;
+	margin-bottom:20px;
+	padding:20px;
+	font-family:"Montserrat";
+	/*-webkit-box-shadow: 3px 20px 36px -22px rgba(0,0,0,0.24);
+-moz-box-shadow: 3px 20px 36px -22px rgba(0,0,0,0.24);
+box-shadow: 3px 20px 36px -22px rgba(0,0,0,0.24);*/
+    border: 1px solid;
+    border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+    border-radius: 3px;
+}
+.boxTemplate h2 {
+	font-size:14px;	
+	font-weight:300;
+	color:#8AAF57;
+	
+}
+
+.boxTemplate p {
+	font-size:12px;	
+	font-weight:300;
+	
+}
+.animated { 
+    -webkit-animation-duration: 1.5s; 
+    animation-duration: 1.5s; 
+    -webkit-animation-fill-mode: both; 
+    animation-fill-mode: both; 
+    animation-iteration-count:forwards; 
+    -webkit-animation-iteration-count:forwards; 
+} 
+
+@-webkit-keyframes fadeInUp { 
+    0% { 
+        opacity: 0; 
+        -webkit-transform: translateY(20px); 
+    } 
+    100% { 
+        opacity: 1; 
+        -webkit-transform: translateY(0); 
+    } 
+} 
+
+@keyframes fadeInUp { 
+    0% { 
+        opacity: 0; 
+        transform: translateY(20px); 
+    } 
+    100% { 
+        opacity: 1; 
+        transform: translateY(0); 
+    } 
+} 
+
+.fadeInUp { 
+    -webkit-animation-name: fadeInUp; 
+    animation-name: fadeInUp; 
+}
+
+h1 {
+	font-size:40px;	
+	text-align:center;
+	font-family:"Montserrat";
+	font-weight:400;
+}
+
+.votingPanel {
+	width:100px;
+	height:100%;	
+	float:left;
+	position:relative;
+	
+}
+
+
+.row {
+    display: flex; /* equal height of the children */
+}
+
+.col {
+    /*flex: 1;*/ /* additionally, equal width */
+}
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h3 {
+	font-size:18px;
+	font-weight:300;
+}
+</style>
+
+</head>
+
+<body>
+<!--<h1> IntraFeed</h1>-->
+<div id="sidebar"> </div>
+	<div class=" row boxTemplate animated fadeInUp"> 
+    	<div style="width:40px; !important" class=" col"> 
+        	<i style="margin-top:10px;"class="fa fa-chevron-up"></i>
+        	<br>
+            <h3 style="margin-top:20px;">
+            10
+            </h3>
+            
+        	<i class="fa fa-chevron-down"></i></div>
+        <div style="width:400px;"class=" col">
+        <h2>Anonymous </h2>
+    	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet faucibus dapibus. Donec dapibus finibus euismod. Morbi tempor, lectus eu faucibus sollicitudin, nisi diam vulputate sem, ac tempus elit ex nec arcu. </p>
+        </div>
+        
+	</div>
+<div class="boxTemplate animated fadeInUp"> <h2> Anonymous</h2> <p>asdfdsafdsf </p></div>
+<div class="boxTemplate animated fadeInUp"> <h2> Anonymous</h2> <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet faucibus dapibus. Donec dapibus finibus euismod. Morbi tempor, lectus eu faucibus sollicitudin, nisi diam vulputate sem, ac tempus elit ex nec arcuLorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquet faucibus dapibus. Donec dapibus finibus euismod. Morbi tempor, lectus eu faucibus sollicitudin, nisi diam vulputate sem, ac tempus elit ex nec arcu</p></div>
+
+
+<hr></hr>
+</body>
+</html>
